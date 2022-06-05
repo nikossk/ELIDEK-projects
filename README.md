@@ -21,4 +21,7 @@ In this project we build a database to manage the projects funded by an institut
 </div>
 
 ## Installation
-1. Firstly, initialize a mysql database at a localhost
+1. Firstly, initialize a mysql database at a localhost.
+2. Connect in mysql host from a terminal.
+3. Run the following sql files strictly at this order:
+
