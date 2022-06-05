@@ -39,10 +39,5 @@ In this project we build a database to manage the projects funded by an institut
     - project_insert_data_deliverable.sql
     - project_isert_data_refers_to.sql
     - project_insert_data_works_on.sql
-4. Install all necesary packages for the app by executing the command :
-    ```
-    pip install -r requirements.txt
-    ```
-   in your terminal.
-
+4. Install all necesary packages for the app by executing the command `pip install -r requirements.txt` in your terminal.
 5. Restart your computer and run the `run.py` file. 
