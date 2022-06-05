@@ -1,6 +1,7 @@
 # ELIDEK-projects
 
 ## Overview
+In this project we build a website simulating a databse of an institution called ELIDEK.
 
 ## Requirements
 - MySQl for Windows
@@ -19,3 +20,5 @@
   <img src="https://github.com/nikossk/ELIDEK-projects/blob/main/images/Relational%20diagram.png?raw=true" width="700" height="710"/>
 </div>
 
+## Installation
+1. Firstly, initialize a mysql database at a localhost
