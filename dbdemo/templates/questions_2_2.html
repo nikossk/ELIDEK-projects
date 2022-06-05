@@ -1,0 +1,40 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    {% if reslist|length == 0 %}
+        <h1 style="margin-top: 5rem;">Δεν βρέθηκαν έργα!</h1>
+    {% else %}
+        {% for res in reslist %}
+            <div class="row" id="row-2">
+                <div class="col-md-12">         
+                    <div class="card" id="card-mycontainer">
+                        <div class="card-body" id="card">
+                        {% if res.titles|length == 0 %}
+                            <h1 style="margin-top: 5rem;">Δεν βρέθηκαν πανεπιστήμια!</h1>
+                        {% else %}
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ res.field }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for title in res.titles %}
+                                            <tr>
+                                                <td> {{ title }} </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}    
+</div>
+{% endblock content %}

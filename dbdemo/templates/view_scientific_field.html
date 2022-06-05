@@ -1,0 +1,73 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if scientific_fields|length == 0 %}
+                    <h1 style="margin-top: 5rem;">Δεν βρέθηκαν επιστημονικά πεδία!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Όνομα</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for scientific_field in scientific_fields %}
+                                    <tr>
+                                        <td> {{ scientific_field.name }} </td>
+                                        <td>
+                                            <button style = "all: unset; cursor: pointer;" type = "button"
+                                            data-bs-toggle = "modal" data-bs-target = "#deleteModal"
+                                            data-id = "{{ scientific_field.name }}" onclick = "setDeleteModalFields(this)">
+                                                <i class = "fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete modal -->
+<div class = "modal fade" id="deleteModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "deleteModalLabel">Διαγραφή επιστημονικού πεδίου</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                Σε περίπτωση που κάποιο έργο σχετίζεται με το επιστημονικό πεδίο η διαγραφή θα αποτύχει. 
+            </div>
+            <div class = "modal-body">
+                Είστε βέβαιοι ότι θέλετε να συνεχίσετε;  
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Άκυρο</button>
+                <form id = "delete-modal-form">
+                    <input type = "submit" class = "btn btn-danger" value = "Διαγραφή">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setDeleteModalFields(row) {
+        document.getElementById("delete-modal-form").action = "/view/scientific_field/delete/" + row.getAttribute("data-id");
+        document.getElementById("delete-modal-form").method = "POST";
+    }
+</script>
+
+{% endblock content %}
