@@ -1,0 +1,38 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                {% if executives|length == 0 %}
+                    <h1 style="margin-top: 5rem;">Δεν βρέθηκαν στελέχη!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Όνομα στελέχους</th>
+                                    <th>Εταιρεία</th>
+                                    <th>Συνολικό ποσό χρηματοδότησης (&euro;)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for executive in executives %}
+                                    <tr>
+                                        <td> {{ executive.fullname }} </td>
+                                        <td> {{ executive.org_name }} </td>
+                                        <td> {{ executive.esum }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

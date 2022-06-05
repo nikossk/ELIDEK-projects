@@ -1,0 +1,26 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row justify-content-center" id="row">
+        <div class="col-md-8">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Έργα ανά ερευνητή</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/questions/2_1">Πατήστε εδώ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center" id="row-2">
+        <div class="col-md-8">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Έργα ανά επιστημονικό πεδίο</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/questions/2_2">Πατήστε εδώ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

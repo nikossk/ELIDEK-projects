@@ -1,0 +1,62 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Στέλεχος ΕΛ.ΙΔ.Ε.Κ.</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/executive">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Πρόγραμμα ΕΛ.ΙΔ.Ε.Κ.</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/program">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="row-2">
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Οργανισμός</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/organisation">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Ερευνητής</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/researcher">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="row-2">
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Έργο</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/project">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Επιστημονικό πεδίο</h4>
+                    <a class="btn btn-primary" id="show-btn" href="/view/scientific_field">Επισκόπηση</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

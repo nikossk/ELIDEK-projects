@@ -1,0 +1,37 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Επισκόπηση</h4>
+                    <p class="card-text" id="paragraph">Επισκόπηση, ενημέρωση και διαγραφή των δεδομένων της βάσης</p>
+                    <a class="btn btn-primary" id="show-btn" href="/view">Πατήσετε εδώ</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Δημιουργία</h4>
+                    <p class="card-text" id="paragraph">Δημιουργία και αποθήκευση νέων δεομένων στην βάση<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/create">Πατήσετε εδώ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center" id="row">
+        <div class="col-md-6">
+            <div class="card" id="card-mycontainer">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Συχνές ερωτήσεις</h4>
+                    <p class="card-text" id="paragraph">Απαντήσεις σε συχνές ερωτήσεις για τα δεδομένα της βάσης</p>
+                    <a class="btn btn-primary" id="show-btn" href="/questions">Πατήσετε εδώ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

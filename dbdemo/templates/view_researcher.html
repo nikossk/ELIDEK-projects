@@ -1,0 +1,199 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if researchers|length == 0 %}
+                    <h1 style="margin-top: 5rem;">Δεν βρέθηκαν ερευνητές!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Όνομα</th>
+                                    <th>Επώνυμο</th>
+                                    <th>Ημερομηνία Γέννησης</th>
+                                    <th>Ημερομηνία Πρόσληψης</th>
+                                    <th>Οργανισμός</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in researchers %}
+                                    <tr>
+                                        <td> {{ researcher.researcher_id }} </td>
+                                        <td> {{ researcher.first_name }} </td>
+                                        <td> {{ researcher.last_name }} </td>
+                                        <td> {{ researcher.birth_date }} </td>
+                                        <td> {{ researcher.employment_date }} </td>
+                                        <td> {{ researcher.organisation_name }} </td>
+                                        <td>
+                                            <a type="button" onclick="setModalFields(this)"
+                                            data-toggle="modal" data-id="{{ researcher.researcher_id }}"
+                                            data-name="{{researcher.first_name}}"  data-surname= "{{researcher.last_name}}"
+                                            data-sex="{{researcher.sex}}"  data-birth_date="{{researcher.birth_date}}" data-employment_date="{{researcher.employment_date}}" 
+                                            data-organisation="{{researcher.organisation_name}}" data-bs-toggle = "modal" 
+                                            data-bs-target="#editModal">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button style = "all: unset; cursor: pointer;" type = "button"
+                                            data-bs-toggle = "modal" data-bs-target = "#deleteModal"
+                                            data-id = "{{ researcher.researcher_id }}" onclick = "setDeleteModalFields(this)">
+                                                <i class = "fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit modal -->
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Επεξεργασία ερευνητή</h4>
+            </div>
+            <div class="modal-body">
+                <form id="modal-form">
+                    {{ form.hidden_tag() }}
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            {{ form.name.label(class = "form-label") }}
+                            {{ form.name(class = "form-control", placeholder="", required = False) }}
+                            {% if form.name.errors %}
+                            <ul class = "errors">
+                                {% for error in form.name.errors %}
+                                <li class = "text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            {{ form.surname.label(class = "form-label") }}
+                            {{ form.surname(class = "form-control", placeholder="", required = False) }}
+                            {% if form.surname.errors %}
+                            <ul class = "errors">
+                                {% for error in form.surname.errors %}
+                                <li class = "text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        {{ form.sex.label(class = "form-label") }}
+                        {{ form.sex(class = "form-control", placeholder="f", required = False) }}
+                        {% if form.sex.errors %}
+                        <ul class = "errors">
+                            {% for error in form.sex.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            {{ form.birth_date.label(class = "form-label") }}
+                            {{ form.birth_date(class = "form-control", placeholder="", required = False) }}
+                            {% if form.birth_date.errors %}
+                            <ul class = "errors">
+                                {% for error in form.birth_date.errors %}
+                                <li class = "text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            {{ form.employment_date.label(class = "form-label") }}
+                            {{ form.employment_date(class = "form-control", placeholder="", required = False) }}
+                            {% if form.employment_date.errors %}
+                            <ul class = "errors">
+                                {% for error in form.employment_date.errors %}
+                                <li class = "text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>                   
+                    <div>
+                        {{ form.organisation.label(class = "form-label") }}
+                        {{ form.organisation(class = "form-control", id = "organisation", required = False) }}
+                        {% if form.organisation.errors %}
+                        <ul class = "errors">
+                            {% for error in form.organisation.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {{ form.submit(class = "btn btn btn-success", form = "modal-form", value = "Ενημέρωση") }}
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Άκυρο</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Delete modal -->
+<div class = "modal fade" id="deleteModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "deleteModalLabel">Διαγραφή ερευνητή</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                Σε περίπτωση που ο/η ερενυτής/τρια έχει συμμετοχή σε κάποιο έργο η διαγραφή θα αποτύχει. 
+            </div>
+            <div class = "modal-body">
+                Είστε βέβαιοι ότι θέλετε να συνεχίσετε;  
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Άκυρο</button>
+                <form id = "delete-modal-form">
+                    <input type = "submit" class = "btn btn-danger" value = "Διαγραφή">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setModalFields(row) {
+        document.getElementById("name").value = row.getAttribute("data-name");
+        document.getElementById("surname").value = row.getAttribute("data-surname");
+        document.getElementById("sex").value = row.getAttribute("data-sex");
+        document.getElementById("birth_date").value = row.getAttribute("data-birth_date");
+        document.getElementById("employment_date").value = row.getAttribute("data-employment_date");
+        document.getElementById("organisation").value = row.getAttribute("data-organisation");
+        document.getElementById("modal-form").action = "/view/researcher/update/" + row.getAttribute("data-id");
+        document.getElementById("modal-form").method = "POST";
+        // document.getElementById("submit").addEventListener("click", (e) => {e.preventDefault();});
+        // commented line above would prevent the default behavior of the submit button, that is, sending the
+        // form data with a post request to the determined address and subsequently closing the pop-up
+    }
+
+    function setDeleteModalFields(row) {
+        document.getElementById("delete-modal-form").action = "/view/researcher/delete/" + row.getAttribute("data-id");
+        document.getElementById("delete-modal-form").method = "POST";
+    }
+</script>
+
+{% endblock content %}
