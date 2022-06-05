@@ -43,4 +43,5 @@ In this project we build a database to manage the projects funded by an institut
 5. Restart your computer and run the `run.py` file. 
 
 ## Authors
-[Nikos Skoumios](https://github.com/nikossk)
+- [Panagiotis Anastasas](https://github.com/PanagiotisAnastasas)
+- [Nikos Skoumios](https://github.com/nikossk)
