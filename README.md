@@ -16,6 +16,6 @@
 
 ## Relational Diagram
 <div align="center">
-  <img src="https://github.com/nikossk/ELIDEK-projects/blob/main/images/Relational%20diagram.png?raw=true" width="600" height="600"/>
+  <img src="https://github.com/nikossk/ELIDEK-projects/blob/main/images/Relational%20diagram.png?raw=true" width="700" height="710"/>
 </div>
 
