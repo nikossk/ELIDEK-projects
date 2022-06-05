@@ -1,7 +1,7 @@
 # ELIDEK-projects
 
 ## Overview
-In this project we build a website simulating a databse of an institution called ELIDEK.
+In this project we build a database to manage the projects funded by an institution called ELIDEK.
 
 ## Requirements
 - MySQl for Windows
